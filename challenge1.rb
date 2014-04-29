@@ -19,36 +19,24 @@
 			def attack
 				return @attack
 			end	
+			def receive(attack)
+				result = attack - (attack * @defense/ 100)
+				@hp = @hp - result
+				puts ("#{'Hp'} = #{@hp}" )
+			end
+
 		end	
 
 		class Warrior < Hero
-			def initialize(hp,attack,defense)
-			 super(hp,attack,defense)
-			 
-			end
+			
 		end	 
 
 		class Wizard < Hero
-			def initialize(hp,attack,defense)
-			 super(hp,attack,defense)
 			
-			end
 		end
 
 		class Archer < Hero
-			def initialize(hp,attack,defense)
-			 super(hp,attack,defense)
-		
-			end
-		end
-
-	   class Receive < Hero
-			def initialize(hp,attack,defense)
-				super(hp,attack,defense)		
-				result = attack - (attack * defense/ hp)
-				final = hp - result
-				puts ("#{'Hp'} = #{final}" )
-			end
+			
 		end
 
 		case option
@@ -78,7 +66,7 @@
 				puts "\n"
 				puts ("Ohh you received one attack!!!!")
 				puts "Now your Status is: "
-				oWarrior = Receive.new(oWarrior.hp, oWarrior.attack, oWarrior.defense)
+				oWarrior = oWarrior.receive(gets.chomp().to_i)
 			when "2"
 				puts "Thank you..You are not ready to fight!!!"
 				
