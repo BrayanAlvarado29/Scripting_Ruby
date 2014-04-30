@@ -1,4 +1,7 @@
 			 
+			#Challenge #2 Battle Field 
+
+			puts "\n"
 			puts "Do you want to create a new class?"
 			puts "\n"
 			puts "Press: \n 1 = Yes \n 2 = No"
@@ -7,27 +10,60 @@
 			  case start
 
 			when "1"
-			class Arena 
-				oHero = Hero.new(hp , attack, defense)
-				oWarrior = Warrior.new(100, 15, 40)
-				oWizard = Wizard.new(80, 25, 68)
-				oArcher = Archer.new(92, 15, 60)
 
-				@heroes = []
+			 class Hero
 
-				def add_hero(oHero)
-				    @heroes.push(oHero)			   		
-									 
-				end	
+				attr_reader :hp, :attack, :defense  
+				def initialize(hp , attack, defense)
+					@hp = hp
+					@attack = attack
+					@defense = defense			
+				end
+				def receive(attack)
+					result = attack - (attack * @defense/ 100)
+					@hp = @hp - result
+					puts "\n"
+					puts ("Now your status is: ")
+					puts ("#{'Hp'} = #{@hp}" )
+					puts "\n"
+				end
 
-				oArena = Arena.new 
-				oArena.add_hero(oWarrior)
-				oArena.add_hero(oWizard)
-				oArena.add_hero(oArcher)
+			end		
+			 class Warrior < Hero
+				
 			end	
 
+				 class Wizard < Hero
+				
+			end
 
+			 class Archer < Hero
+				
+			end
+				
+			class Field 							
+				
+			
+				oField = Field.new 
+				oHero = Hero.new(100, 15, 40)
+				oWarrior = Warrior.new(100, 15, 40)						
+				oWizard = Wizard.new(80, 25, 68)
+				oArcher = Archer.new(92, 15, 60)
+				
 
+				def add_hero(oWarrior)
+
+						@heroes = []
+						@heroes.push(oWarrior)
+						# puts @heroes	
+						puts("#{'New class'} =  #{@heroes}" )		 
+				end	
+				
+				puts "\n"
+				oField.add_hero(oWarrior)
+			 #    oField.add_hero(oWizard)
+				# oField.add_hero(oArcher)
+			end	
 
 			when "2"
 
@@ -41,7 +77,7 @@
 			puts "\n"
 
 
-			class Hero
+			 class Hero
 
 				attr_reader :hp, :attack, :defense  
 				def initialize(hp , attack, defense)
@@ -60,15 +96,15 @@
 
 			end	
 
-			class Warrior < Hero
+			 class Warrior < Hero
 				
 			end	 
 
-			class Wizard < Hero
+			 class Wizard < Hero
 				
 			end
 
-			class Archer < Hero
+			 class Archer < Hero
 				
 			end
 	
@@ -177,7 +213,7 @@
 				end
 			end
 
-			end
+		end
 
 		
 			
